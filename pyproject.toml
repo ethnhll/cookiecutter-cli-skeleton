@@ -1,0 +1,23 @@
+[project]
+name = "cookiecutter-cli-skeleton"
+version = "0.1.0"
+description = "A cookiecutter template for python CLI programs. Uses Typer for CLI functionality."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "cookiecutter>=2.6",
+]
+
+[dependency-groups]
+dev = [
+  "pre-commit>=3.5",
+]

@@ -1,0 +1,46 @@
+---
+full_name:
+  help: What is your full name?
+  type: str
+
+github_username:
+  help: What is your Github username?
+  type: str
+
+project_name:
+  help: What will you call your project?
+  placeholder: "Copier CLI Skeleton"
+
+project_description:
+  help: How would you describe your project?
+  type: str
+  description: Describe the project in just a sentence or two.
+
+project_slug:
+  type: str
+  help: Give your project a slug.
+  placeholder: "{{ project_name|lower|replace(' ', '-')|replace('_', '-') }}"
+  description: Typically this is the directory name for the project.
+
+package_name:
+  type: str
+  help: Give your project a valid package name.
+  placeholder: "{{ project_slug|replace('-', '_' ) }}"
+  description: |
+    Typically this is the same as project_slug (with underscores instead of
+    dashes to be importable).
+
+project_version: "0.1.0"
+
+python_version:
+  type: str
+  default: "3.9"
+  choices:
+    - "3.9"
+    - "3.10"
+    - "3.11"
+    - "3.12"
+    - "3.13"
+  description: |
+    The minimum Python version your project supports. Note that copier requires
+    at least >=3.9.

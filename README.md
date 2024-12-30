@@ -18,9 +18,6 @@ Material mkdocs
 - ruff
 - gitlint
 
-TODO: look into copier
-<https://copier.readthedocs.io/en/stable/>
-
 ## Setup
 
 ### MacOS

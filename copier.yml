@@ -1,46 +1,55 @@
 ---
-full_name:
-  help: What is your full name?
-  type: str
-
-github_username:
-  help: What is your Github username?
-  type: str
-
-project_name:
-  help: What will you call your project?
-  placeholder: "Copier CLI Skeleton"
-
-project_description:
-  help: How would you describe your project?
-  type: str
-  description: Describe the project in just a sentence or two.
-
-project_slug:
-  type: str
-  help: Give your project a slug.
-  placeholder: "{{ project_name|lower|replace(' ', '-')|replace('_', '-') }}"
-  description: Typically this is the directory name for the project.
-
 package_name:
   type: str
   help: Give your project a valid package name.
-  placeholder: "{{ project_slug|replace('-', '_' ) }}"
   description: |
-    Typically this is the same as project_slug (with underscores instead of
-    dashes to be importable).
+    Name of your Python CLI as an importable package.
+    Must be a valid python identifier, i.e. my_package
+  validator: >-
+    {% if not (package_name | regex_search('^[a-zA-Z][a-zA-Z_0-9]+$')) %}
+    {{ package_name }} is not a valid python package name
+    {% endif %}
 
-project_version: "0.1.0"
+package_version: 0.1.0
+
+package_description:
+  type: str
+  help: A short description of your project.
+  placeholder: One line description of your module/package.
+
+repo_name:
+  type: str
+  help: |
+      Name of the package's repository in version control.
+      Generally this is the package name has underscores replaced by dashes.
+  default: "{{ package_name | replace('_', '-') }}"
+  validator: >-
+    {% if not (repo_name | regex_search('^[a-zA-Z][a-zA-Z_\\.\\-0-9]+$')) %}
+    {{ repo_name }} is not a valid repo name
+    {% endif %}
 
 python_version:
   type: str
-  default: "3.9"
+  default: 3.9
   choices:
-    - "3.9"
-    - "3.10"
-    - "3.11"
-    - "3.12"
-    - "3.13"
+    - 3.9
+    - 3.10
+    - 3.11
+    - 3.12
+    - 3.13
   description: |
-    The minimum Python version your project supports. Note that copier requires
-    at least >=3.9.
+    The minimum Python version your project supports.
+    Note that copier requires at least >=3.9.
+
+author_name:
+  type: str
+  help: What is your full name?
+  placeholder: FirstName LastName
+
+github_username:
+  type: str
+  help: What is your Github username?
+  placeholder:
+    Github username
+
+_subdirectory: "template"
